@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <record model="report.paperformat" id="bp_purchase_order_carton_box_report_format">
+            <field name="name">Purchase Order Carton Box</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_right">7</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <report 
+            string="Purchase Order Box/Carton" 
+            id="purchase_order_carton_box_report" 
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            attachment_use="False"
+            paperformat="bp_purchase_order_carton_box_report_format"
+            name="bp_po_carton_box_report.purchase_order_box_carton_report_template" 
+            file="bp_po_carton_box_report.purchase_order_box_carton_report_template"
+            print_report_name="'Purchase_Order_Box-Carton_' + object.name"
+        />
+    </data>
+</odoo>

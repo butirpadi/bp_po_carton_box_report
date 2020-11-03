@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_warna_box,access.warna.box,model_warna_box,base.default_user,1,1,1,1
+access_jenis_carton,access.jenis.carton,model_jenis_carton,base.default_user,1,1,1,1

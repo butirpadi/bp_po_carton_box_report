@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="bp_carton_product_template_view">
+			<field name="name">bp.carton.product.template.view</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="merge_delivery_btr_mod.btr_product_product_template_only_form_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='hs_code']" position="after">
+					<field name="is_carton_box"/>
+					<label for="box_length" string="Dimensions (L/W/H)" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+					<div class="address_format">
+						<field name="box_length" placeholder="Length" style="width: 25%" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+						&amp;nbsp;
+						<field name="box_width" placeholder="Width" style="width: 25%" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+						&amp;nbsp;
+						<field name="box_height" placeholder="Height" style="width: 25%" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+					</div>
+
+					<field name="jenis_carton_id" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+					<field name="warna_box_id" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+					<field name="isi_per_box" attrs="{'invisible':[('is_carton_box', '=', False)]}" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

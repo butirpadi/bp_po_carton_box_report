@@ -1,0 +1,357 @@
+<odoo>
+    <data>
+        <template id="purchase_order_box_carton_report_template">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="doc">
+
+                    <div class="page">
+                        <style>
+                            tr.table-header td{
+                                vertical-align: middle;
+                            }
+
+                            .page {
+                                font-size:8pt;
+                            }
+
+                            table.table-bordered, table.table-bordered thead tr th, table.table-bordered tbody tr td {
+                                border: black thin solid !important;
+                            }
+                                   
+                            tr.row-partner td{
+                                border-top:thin solid black;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <!-- border-bottom:thin solid black; -->
+                            }
+                            tr.row-order td{
+                                border-top:thin solid grey;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <!-- border-bottom:thin solid black; -->
+                            }
+                            .subtotal-order div{
+                                padding-top:0;
+                                padding-bottom:0;
+                            }
+                            .table tbody tr td{
+                                padding:0;
+                                margin:0;
+                                border-spacing: 0;
+                            }   
+                        </style>
+
+                        <table class="table table-sm table-bordered">
+                            <tbody>
+                                <!-- REPORT HEADER -->
+                                <tr>
+                                    <td colspan="15">
+                                        <div class="row">
+                                            <div class="col-3 text-center align-middle">
+                                                <img t-att-src="image_data_uri(user.company_id.logo)" style="max-width:95%;" />
+                                            </div>
+                                            <div class="col-6">
+                                                <b t-field="user.company_id.name" />
+                                                <!-- <address t-field="user.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}' /> -->
+                                                <br t-if="user.company_id.street"/>
+                                                <span t-if="user.company_id.street" t-esc="user.company_id.street" />
+                                                <br t-if="user.company_id.street2"/>
+                                                <span t-if="user.company_id.street2" t-esc="user.company_id.street2" />
+                                                <br/>
+                                                <span t-if="user.company_id.city" t-esc="user.company_id.city" />
+                                                <span t-if="user.company_id.state_id"> - </span>
+                                                <span t-if="user.company_id.state_id" t-esc="user.company_id.state_id.name" />
+                                                <span t-if="user.company_id.country_id"> - </span>
+                                                <span t-if="user.company_id.country_id" t-esc="user.company_id.country_id.name" />
+                                                <br t-if="user.company_id.email"/>
+                                                <span t-if="user.company_id.email">Email : </span>
+                                                <span t-if="user.company_id.email" t-esc="user.company_id.email" />
+                                                <br t-if="user.company_id.phone"/>
+                                                <span t-if="user.company_id.phone">Phone : </span>
+                                                <span t-if="user.company_id.phone" t-esc="user.company_id.phone" />
+                                            </div>
+                                            <div class="col-3 text-center align-middle " style="font-size:8pt;">
+                                                <img t-if="user.company_id.legal_certified_logo" t-att-src="image_data_uri(user.company_id.legal_certified_logo)" style="max-width:95%" />
+                                                <br t-if="user.company_id.legal_certified_number" />
+                                                <b t-if="user.company_id.legal_certified_number" t-field="user.company_id.legal_certified_number" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- REPORT NAME -->
+                                <tr>
+                                    <td colspan="15" class="text-center">
+                                        <b>PURCHASE ORDER</b>
+                                    </td>
+                                </tr>
+
+                                <!-- REPORT PARTNER INFO -->
+                                <tr>
+                                    <td colspan="10" rowspan="2">
+                                        <b>Supplier :</b>
+                                        <br/>
+                                        <span t-field="doc.partner_id" />
+                                    </td>
+                                    <td colspan="5">
+                                        <b>PO No :</b>
+                                        <br/>
+                                        <span t-field="doc.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <b>Tgl Pesan :</b>
+                                        <br/>
+                                        <span t-field="doc.date_order" />
+                                    </td>
+                                </tr>
+
+                                <!-- REPORT CONTENT HEADER -->
+                                <tr class="table-header">
+                                    <td rowspan="2">
+                                        <b>NO</b>
+                                    </td>
+                                    <td rowspan="2" style="vertical-align:middle;" >
+                                        <center>
+                                            <b>ITEM NO</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2" class="text-center">
+                                        <center>
+                                            <b>ITEM NAME</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2" class="text-center">
+                                        <b>GAMBAR</b>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>ETD</b>
+                                        </center>
+                                    </td>
+                                    <td colspan="3">
+                                        <center>
+                                            <b>BOX</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>BARCODE</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>ISI/BOX</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>WARNA</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>BOX QTY</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>JENIS CARTON</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>PRICE</b>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2">
+                                        <center>
+                                            <b>AMOUNT</b>
+                                        </center>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <center>
+                                            <b>L</b>
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <b>W</b>
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <b>H</b>
+                                        </center>
+                                    </td>
+                                </tr>
+
+
+                                <t t-set="rownum" t-value="1" />
+
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="rownum" />
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.default_code" />
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.name" />
+                                        </td>
+                                        <td class="text-center">
+                                            <img t-if="line.product_id.image_medium" t-att-src="image_data_uri(line.product_id.image_medium)" style="max-width:90%" />
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <span t-esc="context_timestamp(line.date_planned).strftime('%d-%m-%Y')" />
+                                            </center>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.box_length" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.box_width" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.box_height" />
+                                        </td>
+                                        <td  >
+                                            <span t-field="line.product_id.product_tmpl_id.barcode" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.isi_per_box" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.warna_box_id" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_qty" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.product_id.product_tmpl_id.jenis_carton_id" />
+                                        </td>
+
+                                        <td class="text-right">
+                                            <span t-field="line.price_unit" />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.price_subtotal" />
+                                        </td>
+                                    </tr>
+                                    <t t-set="rownum" t-value="rownum + 1" />
+
+                                </t>
+
+                                <tr>
+                                    <td colspan="13"></td>
+                                    <td class="text-right">
+                                        <b>PPN</b>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_tax" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13"></td>
+                                    <td class="text-right">
+                                        <b>NET</b>
+                                    </td>
+                                    <td class="text-right">
+                                        <b t-field="doc.amount_total" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="15">
+                                        <b>Note : </b>
+                                        <br/>
+                                        <span t-field="doc.notes" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="15">
+                                        <span class="pull-right">Approved by :</span>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-1"></div>
+                                            <div class="col-2 text-center">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <t t-if="doc.signature_by_po_user">
+                                                    <span t-field="doc.signature_by_po_user_name" style="text-decoration: underline;" />
+                                                    <br/>
+                                                    <b t-esc="user.company_id.po_signature_by_po_user_label" />
+                                                </t>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+
+                                                <t t-if="doc.signature_by_opr_mgr">
+                                                    <span t-field="doc.signature_by_opr_mgr_name" style="text-decoration: underline;" />
+                                                    <br/>
+                                                    <b t-esc="user.company_id.po_signature_by_opr_mgr_label" />
+                                                </t>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+
+                                                <t t-if="doc.signature_by_fin_mgr">
+                                                    <span t-field="doc.signature_by_fin_mgr_name" style="text-decoration: underline;" />
+                                                    <br/>
+                                                    <b t-esc="user.company_id.po_signature_by_fin_mgr_label" />
+                                                </t>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+
+                                                <t t-if="doc.signature_by_direktur">
+                                                    <span t-field="doc.signature_by_direktur_name" style="text-decoration: underline;" />
+                                                    <br/>
+                                                    <b t-esc="user.company_id.po_signature_by_direktur_label" />
+                                                </t>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+
+                                                <t t-if="doc.signature_by_supplier">
+                                                    <span t-field="doc.signature_by_supplier_name" style="text-decoration: underline;" />
+                                                    <br/>
+                                                    <b t-esc="user.company_id.po_signature_by_supplier_label" />
+                                                </t>
+                                            </div>
+                                            <div class="col-1"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <br/>
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
