@@ -22,7 +22,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'purchase_order_report_mod', 'merge_delivery_btr_mod'],
+    'depends': ['base', 'product', 'purchase_order_report_mod', 'merge_delivery_btr_mod', 'wk_product_dimensions'],
 
     # always loaded
     'data': [
