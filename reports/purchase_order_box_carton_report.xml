@@ -207,13 +207,13 @@
                                             </center>
                                         </td>
                                         <td class="text-right">
-                                            <span t-field="line.product_id.product_tmpl_id.box_length" />
+                                            <span t-field="line.product_id.product_tmpl_id.length" />
                                         </td>
                                         <td class="text-right">
-                                            <span t-field="line.product_id.product_tmpl_id.box_width" />
+                                            <span t-field="line.product_id.product_tmpl_id.width" />
                                         </td>
                                         <td class="text-right">
-                                            <span t-field="line.product_id.product_tmpl_id.box_height" />
+                                            <span t-field="line.product_id.product_tmpl_id.height" />
                                         </td>
                                         <td  >
                                             <span t-field="line.product_id.product_tmpl_id.barcode" />
