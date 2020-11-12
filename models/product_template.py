@@ -20,3 +20,4 @@ class ProductTemplate(models.Model):
     warna_box_id = fields.Many2one('warna.box', string='Warna')
     jenis_carton_id = fields.Many2one('jenis.carton', string='Jenis Carton')
     isi_per_box = fields.Integer(string='Isi per Box', default=None)
+    is_carton_box = fields.Boolean(string='Karton Box', default=False)
