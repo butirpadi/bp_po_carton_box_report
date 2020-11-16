@@ -35,6 +35,6 @@ class ProductTemplate(models.Model):
     @api.onchange('length', 'width', 'height')
     def _auto_calculate_volume(self):
         if self.length and self.width and self.height:
-            # self.volume = self.length * self.width * self.height
-            self.volume = float(self.length) * \
-                float(self.width) * float(self.height)
+            self.volume = self.length * self.width * self.height
+            # self.volume = float(self.length) * \
+            #     float(self.width) * float(self.height)
