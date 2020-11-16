@@ -22,14 +22,19 @@ class ProductTemplate(models.Model):
     isi_per_box = fields.Integer(string='Isi per Box', default=None)
     is_carton_box = fields.Boolean(string='Karton Box', default=False)
 
-    # replace from module wk_product_dimensions
-    length = fields.Float(string='Length',)
-    width = fields.Float(string='Width',)
-    height = fields.Float(string='Height',)
+    # # replace from module wk_product_dimensions
+    # length = fields.Float(string='Length',)
+    # width = fields.Float(string='Width',)
+    # height = fields.Float(string='Height',)
+
+    # temp for upgrade module
+    temp_length = fields.Float(string='Length',)
+    temp_width = fields.Float(string='Width',)
+    temp_height = fields.Float(string='Height',)
 
     @api.onchange('length', 'width', 'height')
     def _auto_calculate_volume(self):
         if self.length and self.width and self.height:
-            self.volume = self.length * self.width * self.height
-            # self.volume = float(self.length) * \
-            #     float(self.width) * float(self.height)
+            # self.volume = self.length * self.width * self.height
+            self.volume = float(self.length) * \
+                float(self.width) * float(self.height)
