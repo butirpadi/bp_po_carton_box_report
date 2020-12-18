@@ -41,7 +41,7 @@ class ProductTemplate(models.Model):
         w = factor * self.width
         h = factor * self.height
         self.update({
-            'volumen': l * w * h
+            'volume': l * w * h
         })
 
         # if self.length and self.width and self.height:
