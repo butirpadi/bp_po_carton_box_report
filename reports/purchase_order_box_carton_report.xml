@@ -19,10 +19,10 @@
                             }
                                    
                             tr.row-partner td{
-                                border-top:thin solid black;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <!-- border-bottom:thin solid black; -->
+                                border-top:thin solid black;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <!-- border-bottom:thin solid black; -->
                             }
                             tr.row-order td{
-                                border-top:thin solid grey;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <!-- border-bottom:thin solid black; -->
+                                border-top:thin solid grey;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <!-- border-bottom:thin solid black; -->
                             }
                             .subtotal-order div{
                                 padding-top:0;
@@ -39,74 +39,74 @@
                             <tbody>
                                 <!-- REPORT HEADER -->
                                 <tr>
-                                    <td colspan="15">
-                                        <div class="row">
-                                            <div class="col-3 text-center align-middle">
-                                                <img t-att-src="image_data_uri(user.company_id.logo)" style="max-width:95%;" />
-                                            </div>
-                                            <div class="col-6">
-                                                <b t-field="user.company_id.name" />
-                                                <!-- <address t-field="user.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True}' /> -->
-                                                <br t-if="user.company_id.street"/>
-                                                <span t-if="user.company_id.street" t-esc="user.company_id.street" />
-                                                <br t-if="user.company_id.street2"/>
-                                                <span t-if="user.company_id.street2" t-esc="user.company_id.street2" />
-                                                <br/>
-                                                <span t-if="user.company_id.city" t-esc="user.company_id.city" />
-                                                <span t-if="user.company_id.state_id"> - </span>
-                                                <span t-if="user.company_id.state_id" t-esc="user.company_id.state_id.name" />
-                                                <span t-if="user.company_id.country_id"> - </span>
-                                                <span t-if="user.company_id.country_id" t-esc="user.company_id.country_id.name" />
-                                                <br t-if="user.company_id.email"/>
-                                                <span t-if="user.company_id.email">Email : </span>
-                                                <span t-if="user.company_id.email" t-esc="user.company_id.email" />
-                                                <br t-if="user.company_id.phone"/>
-                                                <span t-if="user.company_id.phone">Phone : </span>
-                                                <span t-if="user.company_id.phone" t-esc="user.company_id.phone" />
-                                            </div>
-                                            <div class="col-3 text-center align-middle " style="font-size:8pt;">
-                                                <img t-if="user.company_id.legal_certified_logo" t-att-src="image_data_uri(user.company_id.legal_certified_logo)" style="max-width:95%" />
-                                                <br t-if="user.company_id.legal_certified_number" />
-                                                <b t-if="user.company_id.legal_certified_number" t-field="user.company_id.legal_certified_number" />
-                                            </div>
-                                        </div>
+                                    <td style="vertical-align:middle;width:150px;border-right:none !important;" class="text-center">
+                                        <img t-att-src="image_data_uri(user.company_id.logo)" style="height:80px;" />
+                                    </td>
+                                    <td style="border-left:none !important;border-right:none !important;">
+                                        <b t-field="user.company_id.name" />
+                                        <br t-if="user.company_id.street"/>
+                                        <span t-if="user.company_id.street" t-esc="user.company_id.street" />
+                                        <br t-if="user.company_id.street2"/>
+                                        <span t-if="user.company_id.street2" t-esc="user.company_id.street2" />
+                                        <br/>
+                                        <span t-if="user.company_id.city" t-esc="user.company_id.city" />
+                                        <span t-if="user.company_id.state_id"> - </span>
+                                        <span t-if="user.company_id.state_id" t-esc="user.company_id.state_id.name" />
+                                        <span t-if="user.company_id.country_id"> - </span>
+                                        <span t-if="user.company_id.country_id" t-esc="user.company_id.country_id.name" />
+                                        <br t-if="user.company_id.email"/>
+                                        <span t-if="user.company_id.email">Email : </span>
+                                        <span t-if="user.company_id.email" t-esc="user.company_id.email" />
+                                        <br t-if="user.company_id.phone"/>
+                                        <span t-if="user.company_id.phone">Phone : </span>
+                                        <span t-if="user.company_id.phone" t-esc="user.company_id.phone" />
+                                    </td>
+                                    <td colspan="3" style="font-size:8pt;vertical-align:middle;border-left:none !important;" class="text-right">
+                                        <img t-if="user.company_id.legal_certified_logo" t-att-src="image_data_uri(user.company_id.legal_certified_logo)" style="height:80px" />
+                                        <br t-if="user.company_id.legal_certified_number" />
+                                        <b t-if="user.company_id.legal_certified_number" t-field="user.company_id.legal_certified_number" />
                                     </td>
                                 </tr>
 
                                 <!-- REPORT NAME -->
                                 <tr>
-                                    <td colspan="15" class="text-center">
+                                    <td colspan="4" class="text-center">
                                         <b>PURCHASE ORDER</b>
                                     </td>
                                 </tr>
 
+
                                 <!-- REPORT PARTNER INFO -->
                                 <tr>
-                                    <td colspan="10" rowspan="2">
+                                    <td colspan="2" rowspan="2">
                                         <b>Supplier :</b>
                                         <br/>
                                         <span t-field="doc.partner_id" />
                                     </td>
-                                    <td colspan="5">
+                                    <td >
                                         <b>PO No :</b>
                                         <br/>
                                         <span t-field="doc.name" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5">
+                                    <td >
                                         <b>Tgl Pesan :</b>
                                         <br/>
                                         <span t-field="doc.date_order" />
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
 
+                        <table class="table table-sm table-bordered">
+                            <tbody>
                                 <!-- REPORT CONTENT HEADER -->
                                 <tr class="table-header">
                                     <td rowspan="2">
                                         <b>NO</b>
                                     </td>
-                                    <td rowspan="2" style="vertical-align:middle;" >
+                                    <td rowspan="2" style="vertical-align:middle;">
                                         <center>
                                             <b>ITEM NO</b>
                                         </center>
